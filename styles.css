@@ -43,4 +43,9 @@ body {
     border-color: black;
 }
 
-   
+.stats {
+    width: 100px;
+    margin-right: 10px;
+    color: aliceblue;
+
+}   
