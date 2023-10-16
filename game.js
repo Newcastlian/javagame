@@ -1,14 +1,16 @@
 const textElement = document.getElementById('text')
 const optionsButtonsElement = document.getElementById('option-buttons')
-const expElement = document.getElementById('exp')
-const moneyElement = document.getElementById('money')
 
 
 
 
 
+
+// the players state
 let state = {}
 
+
+// starts the game
 function startGame() {
     state = {}
     showTextNode(1)
@@ -16,9 +18,55 @@ function startGame() {
 }
 
 
+//
+var output = function(txt) {
+    document.getElementById("game").innerHTML = txt;
+  };
+  
+  add_output = document.getElementById("game");
+
+
+// player info
+const player = {
+
+    name: "Unknown",
+
+    health: 100,
+  
+    strength: 10,
+  
+    money: 0,
+    
+    abilities: [],
+}
+
+
+// shows players stats
+displayStats = function() {
+    clearGameWindow();
+    var hold = [];
+    for (var i = 0; i < player.abilities.length; i++) {
+      hold.push(" " + player.abilities[i].name)
+    };
+  
+    output(
+      "Name: " + player.name + "<br/>" +
+      "Strength: " + player.strength + "<br>" +
+      "Money: " + player.money + "<br>" +
+      "Health: " + player.health + "<br />"+
+      "Abilities: " + hold
+    );
+  };
+
+
+// clears text
+  var clearGameWindow = function() {
+    document.getElementById("game").innerHTML = "";
+  };
 
 
 
+// updates html to textnodes id
 function showTextNode(textNodeIndex) {
   const textNode = textNodes.find(textNode => textNode.id ===
         textNodeIndex)
@@ -56,6 +104,7 @@ function selectOption(option) {
     showTextNode(nextTextNodeId)
 }
 
+
 const textNodes = [
     {
         id: 1,
@@ -64,7 +113,7 @@ const textNodes = [
             {
                 text:'Take sword',
                 setState: { sword: true},
-                nextText: 2
+                nextText: 37
             },
             {
                 text: 'Leave the sword',
@@ -563,7 +612,8 @@ const textNodes = [
             nextText: 20
            },
            {
-            text: 'Blackbeard',
+            text:'Blackbeard',
+            
             nextText: 37
            },
            {

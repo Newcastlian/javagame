@@ -49,10 +49,14 @@ body {
 .stats {
     width: 100px;
     margin-right: 10px;
-    color: aliceblue;
+    color: rgb(0, 0, 0);
 
 }   
 
 .text {
     color: white;
+}
+
+.game{
+    color: blue;
 }
