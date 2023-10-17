@@ -6,6 +6,7 @@ const optionsButtonsElement = document.getElementById('option-buttons')
 
 
 
+
 // the players state
 let state = {}
 
@@ -18,8 +19,8 @@ function startGame() {
 }
 
 
-//
-var output = function(txt) {
+
+let output = function(txt) {
     document.getElementById("game").innerHTML = txt;
   };
   
@@ -31,8 +32,8 @@ const player = {
 
     name: "Unknown",
 
-    health: 100,
-  
+    health: 1000,
+
     strength: 10,
   
     money: 0,
@@ -42,12 +43,10 @@ const player = {
 
 
 // shows players stats
-displayStats = function() {
+function displayStats() {
     clearGameWindow();
     var hold = [];
-    for (var i = 0; i < player.abilities.length; i++) {
-      hold.push(" " + player.abilities[i].name)
-    };
+
   
     output(
       "Name: " + player.name + "<br/>" +
@@ -60,13 +59,12 @@ displayStats = function() {
 
 
 // clears text
-  var clearGameWindow = function() {
+function clearGameWindow() {
     document.getElementById("game").innerHTML = "";
   };
 
 
-
-// updates html to textnodes id
+// displays text and options
 function showTextNode(textNodeIndex) {
   const textNode = textNodes.find(textNode => textNode.id ===
         textNodeIndex)
@@ -105,6 +103,7 @@ function selectOption(option) {
 }
 
 
+
 const textNodes = [
     {
         id: 1,
@@ -113,10 +112,11 @@ const textNodes = [
             {
                 text:'Take sword',
                 setState: { sword: true},
-                nextText: 37
+                nextText: 2
             },
             {
                 text: 'Leave the sword',
+                setState: {money: player.money += 50},
                 nextText: 2
             }
         ]
@@ -626,6 +626,7 @@ const textNodes = [
            },
     ]
 },
+
 {
     id:37,
     text: 'Congratulations you are now a millionaire',
@@ -651,11 +652,39 @@ const textNodes = [
         },
     ]
 },
-
-
-
 ]   
 
 
+
+
+// Function to update the player's state based on a text node
+function updatePlayerState(player, textNode, selectedOptionIndex) {
+    if (textNode.options && selectedOptionIndex >= 0 && selectedOptionIndex < textNode.options.length) {
+        const selectedOption = textNode.options[selectedOptionIndex];
+        
+        if (selectedOption.requiredState && selectedOption.requiredState(player)) {
+            // Check if the selected option's setState contains a money property
+            if (selectedOption.setState && selectedOption.setState.money !== undefined) {
+                // Update the player's money based on the chosen option
+                player.money += selectedOption.setState.money;
+            }
+        }
+    }
+}
+
+
+const options = document.getElementById("")
+
+
+
+
+const selectedOptionIndex = 0;
+const selectedTextNodeId = 1;
+
+
+const selectedTextNode = textNodes.find((node) => node.id === selectedTextNodeId);
+updatePlayerState(player, selectedTextNode, selectedOptionIndex);
+
+console.log(`Player's money: $${player.money}`);
 
 startGame()
