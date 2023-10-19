@@ -1,3 +1,7 @@
+
+
+
+
 const textNodes = [
     {
         id: 1,
@@ -5,27 +9,29 @@ const textNodes = [
         options: [
             {
                 text:'Take sword',
-                setState: { sword: true},
+                setState: {sword: true},
+                money: + 50,
                 nextText: 2
             },
             {
                 text: 'Leave the sword',
-                setState: {money: 50},
-                nextText: 2
+                nextText: 2,
             }
         ]
-    }, { 
+    },
+    { 
         id:2,
         text: 'You encounter a Goblin',
         options: [
             {
              text: 'Fight unarmed',
              requiredState: (currentState) => !currentState.sword,
-             nextText: 4
+             nextText: 4,    
             },
             {
              text: 'Fight with sword',
              requiredState: (currentState) => currentState.sword,
+             money:  + 50,
              nextText: 6
             }
      ]
@@ -547,3 +553,5 @@ const textNodes = [
     ]
 },
 ]   
+
+

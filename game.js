@@ -3,6 +3,7 @@ const optionsButtonsElement = document.getElementById('option-buttons')
 
 
 // player info
+
 let state = {
 
     name: "Unknown",
@@ -14,7 +15,10 @@ let state = {
     money: 0,
     
     abilities: [],
-}
+};
+
+
+
 
 
 // shows players stats
@@ -38,6 +42,8 @@ function selectOption(option) {
     }
     // adds state option to state store
     state = Object.assign(state, option.setState)
+    state.money += (option.money),
+    
     startGame(nextTextNodeId)
     console.log(state)
 }
@@ -69,7 +75,12 @@ function startGame(textNodeIndex) {
 }
 
 
-console.log(textNodes[1].text)
+
+
+console.log(state)
 
 
 startGame(1)
+
+
+ 
