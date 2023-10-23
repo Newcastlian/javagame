@@ -31,7 +31,7 @@ const textNodes = [
             {
              text: 'Fight with sword',
              requiredState: (currentState) => currentState.sword,
-             money:  + 50,
+             money:  - 50,
              nextText: 6
             }
      ]

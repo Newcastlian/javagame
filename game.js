@@ -19,6 +19,12 @@ let state = {
 
 
 
+function userName() {
+    state.name = prompt("Enter your name")
+};
+
+
+
 
 
 // shows players stats
@@ -79,7 +85,7 @@ function startGame(textNodeIndex) {
 
 console.log(state)
 
-
+userName()
 startGame(1)
 
 
