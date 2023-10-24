@@ -90,7 +90,21 @@ body {
 }
 
 .game{
-    color: blue;
+    backface-visibility: hidden;
+    position: relative;
+    cursor: pointer;
+    display: inline-block;
+    white-space: nowrap;
+    background: #7d4610;
+    border-radius: 6px;
+    border: 0px solid rgba(0%,0%,0%,0.511);
+    border-width: 0px 0px 0px 0px;
+    padding: 10px 20px 10px 20px;
+      color: #fff8f9;
+    font-size: 16px;
+    font-family: Helvetica Neue;
+    font-weight: 900;
+    font-style: normal
 }
 
 .stats {
