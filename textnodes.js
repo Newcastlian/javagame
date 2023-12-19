@@ -222,11 +222,6 @@ const textNodes = [
          money: + 0,
          nextText: 18
         },
-        {
-         text: 'KYS',
-         money: + 0,
-         nextText: -1
-        },
     ]
 },
 {
